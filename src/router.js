@@ -1,25 +1,73 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Vue from 'vue'
+import VueRouter from 'vue-router';
 
-Vue.use(Router);
+Vue.use(VueRouter);
+const routes = [
+{
 
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
+  path: '/',
+  component: r => require(['@/views/App'], r),
+  children: [
+     {
+       path: '',
+       redirect: '/index'
+     },
     {
-      path: '/',
-      name: 'home',
-      component: Home,
+    path: '/index',
+    component: r => require(['@/views/index/Index'], r)
     },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-    },
-  ],
-});
+       {
+         path:'/city',
+         
+         component:r => require(['@/views/city/City'],r)
+       },
+       {
+         path:'/msite',
+         name:'Msite',
+         meta:{
+           keepAlive:true
+         },
+         component: r => require(['@/views/msite/Msite'],r)
+       },
+       {
+         path:'/order',
+         name:'Order',
+         component: r => require(['@/views/order/Order'],r)
+       },
+       {
+         path:'/search',
+         name:'Search',
+         component: r => require(['@/views/search/Search'],r)
+       },
+       {
+         path:'/profile',
+         name:'Profile',
+         component: r => require(['@/views/profile/Profile'],r)
+       },
+       {
+         path:'/login',
+         name:'Login',
+         component: r => require(['@/views/login/Login'],r)
+       }
+
+  ]
+
+}
+]
+export default new VueRouter({
+  routes,
+  strict: process.env.NODE_ENV !== 'production',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      if (from.meta.keepAlive) {
+        from.meta.savedPosition = document.body.scrollTop;
+      }
+      return {
+        x: 0,
+        y: to.meta.savedPosition || 0
+      }
+    }
+  }
+})
