@@ -4,7 +4,10 @@ import App from '@/views/App.vue';
 import router from './router';
 import store from '@/store/store';
 import './common/rem'
+import '@/assets/icons/index.js'
 import FastClick from 'fastclick';
+import ApiServe from '@/serve/request';
+ApiServe.init();
 Vue.config.productionTip = false;
 if ('addEventListener' in document) {
   document.addEventListener('DOMContentLoaded', function () {

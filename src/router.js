@@ -17,7 +17,7 @@ const routes = [
     component: r => require(['@/views/index/Index'], r)
     },
        {
-         path:'/city',
+         path:'/city/:cityId',
          
          component:r => require(['@/views/city/City'],r)
        },

@@ -1,51 +1,51 @@
-body,
-div,
-span,
-header,
-footer,
-nav,
-section,
-aside,
-article,
-ul,
-dl,
-dt,
-dd,
-li,
-a,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-i,
-b,
-textarea,
-button,
-input,
-select,
-figure,
-figcaption,
-    {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    font-style: normal;
-    text-decoration: none;
-    border: none;
-    color: #333;
-    font-weight: normal;
-    font-family: "Microsoft Yahei";
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-font-smoothing: antialiased;
+// body,
+// div,
+// span,
+// header,
+// footer,
+// nav,
+// section,
+// aside,
+// article,
+// ul,
+// dl,
+// dt,
+// dd,
+// li,
+// a,
+// p,
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// i,
+// b,
+// textarea,
+// button,
+// input,
+// select,
+// figure,
+// figcaption,
+//     {
+//     padding: 0;
+//     margin: 0;
+//     list-style: none;
+//     font-style: normal;
+//     text-decoration: none;
+//     border: none;
+//     color: #333;
+//     font-weight: normal;
+//     font-family: "Microsoft Yahei";
+//     box-sizing: border-box;
+//     -webkit-tap-highlight-color: transparent;
+//     -webkit-font-smoothing: antialiased;
 
-    &:hover {
-        outline: none;
-    }
-}
+//     &:hover {
+//         outline: none;
+//     }
+// }
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
@@ -87,16 +87,17 @@ body {
 }
 
 
-.clear:after {
-    content: '';
-    display: block;
-    clear: both;
-}
+/* 清除浮动 */
+.clearfix {
+    *zoom: 1;
 
-.clear {
-    zoom: 1;
+    &:after {
+        display: block;
+        content: "\200B";
+        clear: both;
+        height: 0;
+    }
 }
-
 .back_img {
     background-repeat: no-repeat;
     background-size: 100% 100%;

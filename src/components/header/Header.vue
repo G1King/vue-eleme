@@ -1,6 +1,7 @@
 <template>
 <div id="header_box">
     <slot name="logo"></slot>
+    <slot name='search'></slot>
     <section class="head_goback" @click="$router.go(-1)" v-if="goBack">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
                 <polyline points="12,18 4,9 12,0" style="fill:none;stroke:rgb(255,255,255);stroke-width:2"/>
@@ -17,6 +18,7 @@
             <span class="login-bt" @click="login">登录</span><span class="sign-bt" @click="sign" >注册</span>
         </div>
     </section>
+      <slot name="changecity"></slot>
 </div>
 </template>
 
@@ -94,7 +96,10 @@ export default {
     }
 
     .title_head {
-        flex: 2;
+        position: absolute;
+        left: 50%;
+        top:50%;
+        transform: translate(-50%,-50%);
         text-align: center;
 
         span {
@@ -103,8 +108,10 @@ export default {
         }
     }
     .right-box {
-        margin-right: .3rem;
-
+        position: absolute;
+       right: .3rem;
+        top:50%;
+        transform: translateY(-50%);
         span {
             color: #fff;
             font-size: .65rem;

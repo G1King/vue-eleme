@@ -11,6 +11,8 @@ import {
   TabBar,
   Dialog,
   Toast,
+  Form,
+  Input
 
 } from 'cube-ui'
 
@@ -18,3 +20,5 @@ Vue.use(Button)
 Vue.use(TabBar)
 Vue.use(Toast)
 Vue.use(Dialog)
+Vue.use(Form)
+Vue.use(Input)
