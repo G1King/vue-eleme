@@ -10,9 +10,7 @@
         </div>
         <router-link :to="'/city/' + guessCityid" class="currentCity-content">
             <span class="cc-city-title">{{currentCity}}</span>
-            <svg class="arrow_right">
-         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use>
-      </svg>
+           <Icon-svg iconClass="xiangyoujiantou" class="arrow-right"/>
         </router-link>
     </nav>
     <section class="hot-city">
@@ -36,11 +34,13 @@
             </li>
         </ul>
     </section>
+    
 </div>
 </template>
 
 <script>
 import Header from '@c/header/Header'
+
 import {
     Get_cityGuess,
     Get_hotCity,
@@ -83,7 +83,8 @@ export default {
         }
     },
     components: {
-        Header
+        Header,
+        
     },
     methods: {
         reloadPage() {
@@ -126,6 +127,9 @@ export default {
         }
 
         .currentCity-content {
+            position: relative;
+            display: block;
+            
             margin-left: .3rem;
             color: #3190e8;
             font-size: .9rem;
@@ -133,13 +137,17 @@ export default {
         }
     }
 
-    .arrow_right {
-        @include wh(.6rem, .6rem);
-        fill: #999;
+    .arrow-right {
+        // @include wh(.6rem, .6rem);
+        position: absolute;
+        right: 0.3rem;
+        top: 50%;
+        transform: translateY(-50%);
+        fill: #fff;
     }
 
     .hot-city {
-        border-top: 10px solid #e4e4e4;
+        border-top: 3px solid #e4e4e4;
 
         .hot-city-descp {
             margin-left: .34rem;

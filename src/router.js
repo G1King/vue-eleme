@@ -14,39 +14,57 @@ const routes = [
      },
     {
     path: '/index',
+     meta: {
+        showTabBar:false
+     },
     component: r => require(['@/views/index/Index'], r)
     },
        {
          path:'/city/:cityId',
-         
+          meta: {
+            showTabBar: false
+          },
          component:r => require(['@/views/city/City'],r)
        },
        {
          path:'/msite',
          name:'Msite',
          meta:{
-           keepAlive:true
+           keepAlive:true,
+            showTabBar: true
          },
          component: r => require(['@/views/msite/Msite'],r)
        },
        {
          path:'/order',
          name:'Order',
+            meta: {
+              showTabBar: true
+            },
          component: r => require(['@/views/order/Order'],r)
        },
        {
          path:'/search',
          name:'Search',
+            meta: {
+              showTabBar: true
+            },
          component: r => require(['@/views/search/Search'],r)
        },
        {
          path:'/profile',
          name:'Profile',
+            meta: {
+              showTabBar: true
+            },
          component: r => require(['@/views/profile/Profile'],r)
        },
        {
          path:'/login',
          name:'Login',
+            meta: {
+              showTabBar: false
+            },
          component: r => require(['@/views/login/Login'],r)
        }
 

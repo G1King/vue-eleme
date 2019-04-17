@@ -1,10 +1,11 @@
 <template>
     <div>
         <Header>
-            <router-link :to="'/search/geohash'" class="link_search" slot="search">
-               <icon-svg iconClass="sousuo"/>
+            <router-link :to="'/search'" class="link_search" slot="search">
+               <Icon-svg iconClass="sousuo"/>
     		</router-link>
         </Header>
+       
     </div>
 </template>
 <script>

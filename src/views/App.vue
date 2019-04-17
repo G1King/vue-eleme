@@ -7,13 +7,32 @@
         <keep-alive>
         <router-view v-if="this.$route.meta.keepAlive" />
         </keep-alive>
-    </transition>
+    </transition >
+    <Footer :showTabBar="showTabBar"/>
 </div>
 </template>
 
 <script>
+import Footer from '@c/footer/Footer'
 export default {
-
+    data() {
+        return {
+            showTabBar:''
+        }
+    },
+components:{
+    Footer
+},
+watch: {
+    "$route":function(n){
+        
+        if(n.meta.showTabBar){
+             this.showTabBar = 'show';
+        }else {
+ this.showTabBar = '';
+        }
+    }
+},
 }
 </script>
 

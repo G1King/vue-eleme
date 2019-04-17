@@ -44,8 +44,6 @@ export default {
 
     methods: {
         login(){
-            console.log(this.goBack);
-            return;
            this.$router.push({path:'/login'})
         },
         sign(){

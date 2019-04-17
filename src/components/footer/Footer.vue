@@ -1,17 +1,22 @@
 <template>
-   <div class="tabbar-box">
+   <div class="tabbar-box" v-show="showTabBar">
        <cube-tab-bar
     v-model="selectedLabelDefault"
     :data="tabs"
-    @click="clickHandler">
+    @change="clickHandler">
   </cube-tab-bar>
    </div>
 </template>
 <script>
 export default {
+  props:{
+    showTabBar:{
+      type:String
+    }
+  },
     data() {
         return {
-             selectedLabelDefault: 'Vip',
+          selectedLabelDefault:'外卖',
       tabs: [{
         label: '外卖',
         icon: 'cubeic-home'
@@ -27,9 +32,26 @@ export default {
       }]
         }
     },
+    computed: {
+   
+      path(){
+         if(this.selectedLabelDefault == '外卖'){
+           return {path:'/msite'}
+         }else if(this.selectedLabelDefault == '搜索'){
+           return {path:'/search'}
+         }else if (this.selectedLabelDefault == '订单'){
+           return {path:'/order'}
+         }else {
+           return {path:'/profile'}
+         }
+      }
+    },
+    
     methods: {
         clickHandler (label) {
       console.log(label)
+      this.selectedLabelDefault = label;
+      this.$router.push(this.path);
     }
     },
 }

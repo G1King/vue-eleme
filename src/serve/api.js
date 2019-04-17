@@ -27,3 +27,5 @@ export const Get_searchplace = (cityid, value) => ApiService.get('/v1/pois', {
       }
  
 });
+//登录 
+export const Post_login = (message) => ApiService.post('/v2/login', message)
