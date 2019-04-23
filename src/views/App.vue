@@ -8,12 +8,13 @@
         <router-view v-if="this.$route.meta.keepAlive" />
         </keep-alive>
     </transition >
-    <Footer :showTabBar="showTabBar"/>
+    <footer-bar :showTabBar="showTabBar"/>
 </div>
 </template>
 
 <script>
-import Footer from '@c/footer/Footer'
+import FooterBar from '@c/footer/Footer'
+import _ from 'lodash'
 export default {
     data() {
         return {
@@ -21,7 +22,7 @@ export default {
         }
     },
 components:{
-    Footer
+    FooterBar
 },
 watch: {
     "$route":function(n){

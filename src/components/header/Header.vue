@@ -19,6 +19,7 @@
         </div>
     </section>
       <slot name="changecity"></slot>
+       <slot name="msite-title"></slot>
 </div>
 </template>
 

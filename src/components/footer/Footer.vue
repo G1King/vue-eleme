@@ -14,6 +14,9 @@ export default {
       type:String
     }
   },
+   mounted() {
+         console.log('子组件挂载'); 
+     },
     data() {
         return {
           selectedLabelDefault:'外卖',

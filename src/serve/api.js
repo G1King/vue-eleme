@@ -11,6 +11,7 @@ export const Get_hotCity = () => ApiService.get('/v1/cities',{
   params: {
     type: 'hot'
   }
+  
 });
 //获取所有城市
 export const Get_groupCity = () => ApiService.get('/v1/cities',{params:{type:'group'}});
@@ -29,3 +30,5 @@ export const Get_searchplace = (cityid, value) => ApiService.get('/v1/pois', {
 });
 //登录 
 export const Post_login = (message) => ApiService.post('/v2/login', message)
+//获取msite 页面地址
+export const Get_msiteAddress = (geohash) => ApiService.get('/v2/pois/' + geohash);
