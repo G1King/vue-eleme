@@ -1,25 +1,25 @@
 <template>
-   <div class="tabbar-box" v-show="showTabBar">
-       <cube-tab-bar
-    v-model="selectedLabelDefault"
-    :data="tabs"
-    @change="clickHandler">
-  </cube-tab-bar>
-   </div>
+  <div v-show="showTabBar" class="tabbar-box">
+    <cube-tab-bar
+      v-model="selectedLabelDefault"
+      :data="tabs"
+      @change="clickHandler"
+    >
+    </cube-tab-bar>
+  </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
-  props:{
-    showTabBar:{
-      type:String
+  props: {
+    // eslint-disable-next-line vue/require-default-prop
+    showTabBar: {
+      type: String
     }
   },
-   mounted() {
-         console.log('子组件挂载'); 
-     },
-    data() {
-        return {
-          selectedLabelDefault:'外卖',
+  data() {
+    return {
+      selectedLabelDefault: '外卖',
       tabs: [{
         label: '外卖',
         icon: 'cubeic-home'
@@ -33,30 +33,33 @@ export default {
         label: '我的',
         icon: 'cubeic-person'
       }]
-        }
-    },
-    computed: {
-   
-      path(){
-         if(this.selectedLabelDefault == '外卖'){
-           return {path:'/msite'}
-         }else if(this.selectedLabelDefault == '搜索'){
-           return {path:'/search'}
-         }else if (this.selectedLabelDefault == '订单'){
-           return {path:'/order'}
-         }else {
-           return {path:'/profile'}
-         }
-      }
-    },
-    
-    methods: {
-        clickHandler (label) {
-      console.log(label)
-      this.selectedLabelDefault = label;
-      this.$router.push(this.path);
     }
-    },
+  },
+  computed: {
+    ...mapState(['geohash']),
+    path() {
+      if (this.selectedLabelDefault === '外卖') {
+        return { path: '/msite', query: { hash: this.geohash }}
+      } else if (this.selectedLabelDefault === '搜索') {
+        return { path: '/search' }
+      } else if (this.selectedLabelDefault === '订单') {
+        return { path: '/order' }
+      } else {
+        return { path: '/profile' }
+      }
+    }
+  },
+  mounted() {
+    console.log('子组件挂载')
+  },
+
+  methods: {
+    clickHandler(label) {
+      console.log(label)
+      this.selectedLabelDefault = label
+      this.$router.push(this.path)
+    }
+  }
 }
 </script>
 <style>
@@ -78,6 +81,6 @@ export default {
     height: 1.95rem;
     background-color: #fff;
     z-index: 1111;
-    
+
 }
 </style>

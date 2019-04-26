@@ -12,7 +12,8 @@ import {
   Dialog,
   Toast,
   Form,
-  Input
+  Input,
+  Rate
 
 } from 'cube-ui'
 
@@ -22,3 +23,4 @@ Vue.use(Toast)
 Vue.use(Dialog)
 Vue.use(Form)
 Vue.use(Input)
+Vue.use(Rate)

@@ -1,55 +1,57 @@
 <template>
-<div id="header_box">
-    <slot name="logo"></slot>
-    <slot name='search'></slot>
-    <section class="head_goback" @click="$router.go(-1)" v-if="goBack">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <polyline points="12,18 4,9 12,0" style="fill:none;stroke:rgb(255,255,255);stroke-width:2"/>
-            </svg>
+  <div id="header_box">
+    <slot name="logo" />
+    <slot name="search" />
+    <section v-if="goBack" class="head_goback" @click="$router.go(-1)">
+      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <polyline points="12,18 4,9 12,0" style="fill:none;stroke:rgb(255,255,255);stroke-width:2" />
+      </svg>
 
     </section>
 
     <section class="title_head ellipsis">
-        <span class="title_text">{{headTitle}}</span>
+      <span class="title_text">{{ headTitle }}</span>
     </section>
-    <section class="right-box" v-if="signinUp">
-         <span v-if="userInfo" @click="clickProfile">个人中心</span>
-        <div v-else>
-            <span class="login-bt" @click="login">登录</span><span class="sign-bt" @click="sign" >注册</span>
-        </div>
+    <section v-if="signinUp" class="right-box">
+      <span v-if="userInfo" @click="clickProfile">个人中心</span>
+      <div v-else>
+        <span class="login-bt" @click="login">登录</span><span class="sign-bt" @click="sign">注册</span>
+      </div>
     </section>
-      <slot name="changecity"></slot>
-       <slot name="msite-title"></slot>
-</div>
+    <slot name="changecity" />
+    <slot name="msite-title" />
+  </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 export default {
-    
-   computed: {
-       ...mapState(['userInfo'])
-   },
-    props: {
-        headTitle: {
-            type: String
-        },
-        goBack:{
-            default:false,
-            type:Boolean
-        },
-        signinUp:{
-            type:String
-        }
+
+  computed: {
+    ...mapState(['userInfo'])
+  },
+  // eslint-disable-next-line vue/order-in-components
+  props: {
+    // eslint-disable-next-line vue/require-default-prop
+    headTitle: {
+      type: String
     },
+    goBack: {
+      default: false,
+      type: Boolean
+    },
+    // eslint-disable-next-line vue/require-default-prop
+    signinUp: {
+      type: String
+    }
+  },
 
-    methods: {
-        login(){
-           this.$router.push({path:'/login'})
-        },
-        sign(){
-
-       this.$createDialog({
+  methods: {
+    login() {
+      this.$router.push({ path: '/login' })
+    },
+    sign() {
+      this.$createDialog({
         type: 'confirm',
         icon: 'cubeic-alert',
         title: '注册成功',
@@ -67,12 +69,12 @@ export default {
           href: 'javascript:;'
         }
       }).show()
-        },
-        clickProfile(){
-            this.$router.push({path:'/profile'})
-        }
     },
-    
+    clickProfile() {
+      this.$router.push({ path: '/profile' })
+    }
+  }
+
 }
 </script>
 
@@ -121,7 +123,7 @@ export default {
         }
         .sign-bt{
             padding-left: 5px;
-            
+
         }
          .user_avatar{
             fill: #fff;
